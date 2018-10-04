@@ -13,21 +13,25 @@
         android:layout_marginBottom="60dp"
         android:layout_marginTop="60dp"
         android:text="Wallet"
-        android:textSize="24sp"
+        android:textSize="36sp"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toTopOf="@+id/tvAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tvAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="139dp"
+        android:layout_marginTop="160dp"
         android:text="Amount"
-        android:textSize="24sp"
+
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,10 +39,12 @@
         android:id="@+id/tvLastTrans"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="248dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="280dp"
         android:text="Last Transactions"
+
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,21 +52,30 @@
         android:id="@+id/btnPay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
         android:text="Pay"
+        android:background="#0091b0"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/btnReceive"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnReceive" />
+        app:layout_constraintTop_toTopOf="@+id/btnReceive"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnReceive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="99dp"
-        android:layout_marginEnd="57dp"
-        android:layout_marginRight="57dp"
+        android:layout_marginBottom="184dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
         android:text="Receive"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:background="#0091b0"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

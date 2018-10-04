@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#004c4c"
+
     tools:context=".LoginActivity">
 
     <TextView
@@ -16,10 +16,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="StuPay"
-        android:textColor="#ffffff"
-        android:textSize="35dp"
+        android:textColor="#0091b0"
+        android:textSize="48sp"
         android:textStyle="bold"
-        app:fontFamily="sans-serif" />
+        app:fontFamily="cursive" />
 
     <EditText
         android:id="@+id/etId"
@@ -27,11 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="169dp"
+        android:layout_marginTop="215dp"
         android:focusable="true"
         android:hint="Enter id"
 
-        android:textColorHint="#d3d3d3" />
+        android:textColorHint="#5bafc1" />
 
 
     <EditText
@@ -39,12 +39,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="238dp"
+        android:layout_centerVertical="true"
         android:ems="10"
         android:hint="Enter password"
         android:inputType="textPassword"
-        android:textColorHint="#d3d3d3" />
+        android:textColorHint="#5bafc1" />
 
 
     <Button
@@ -53,8 +52,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="158dp"
-        android:text="login" />
+        android:layout_marginBottom="120dp"
+        android:background="#0091b0"
+        android:text="login"
+        android:textColor="#ffffff" />
 
 
 
