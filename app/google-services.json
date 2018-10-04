@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "707878873067",
+    "firebase_url": "https://stupay-44266.firebaseio.com",
+    "project_id": "stupay-44266",
+    "storage_bucket": "stupay-44266.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707878873067:android:f5e1fbe61eab7a4a",
+        "android_client_info": {
+          "package_name": "com.apps.bellatrix.stupay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707878873067-f3lh4k60bfpgj45ur9467v4gjr11i9na.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps.bellatrix.stupay",
+            "certificate_hash": "2b4486490ae50919310a6f107093b2e8b998dfa8"
+          }
+        },
+        {
+          "client_id": "707878873067-n6g3tkdi6t7eocqknk7p6s0s4jpt47a7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOLnXt-UCyORvmWtWF5EHOMQQTaW4tsGQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707878873067-n6g3tkdi6t7eocqknk7p6s0s4jpt47a7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
