@@ -57,7 +57,11 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 final DatabaseReference ref = firebaseDatabase.getReference();
 
-                final DatabaseReference curr = ref.child("Student").child(String.valueOf(id)).child("-LO-JpcKGtMtWZuqnXOD");
+                String unique = "";
+                if(id ==24) unique = "-LO-JpcKGtMtWZuqnXOD";
+                else unique = "-LO-JpcJWPJ2CjM4tNu9";
+
+                final DatabaseReference curr = ref.child("Student").child(String.valueOf(id)).child(unique);
                 Log.d("TAG", "onClick: "+curr);
 
 //                Log.d("TAG", "onDataChange: "+currBal);
