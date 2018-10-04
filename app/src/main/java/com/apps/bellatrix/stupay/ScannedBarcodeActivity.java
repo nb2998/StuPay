@@ -3,7 +3,6 @@ package com.apps.bellatrix.stupay;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,7 +45,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent successfulIntent = new Intent(ScannedBarcodeActivity.this, ReceiveActivity.class);
+                Intent successfulIntent = new Intent(ScannedBarcodeActivity.this, ConfirmationActivity.class);
                 startActivity(successfulIntent);
             }
         });

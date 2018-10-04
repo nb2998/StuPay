@@ -29,7 +29,7 @@ public class StudentWalletActivity extends AppCompatActivity {
         btnReceive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent receiveIntent = new Intent(StudentWalletActivity.this, ReceiveActivity.class);
+                Intent receiveIntent = new Intent(StudentWalletActivity.this, ReceiveStudentActivity.class);
                 startActivity(receiveIntent);
             }
         });

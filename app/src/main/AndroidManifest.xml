@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PayActivity" />
-        <activity android:name=".ReceiveActivity" />
+        <activity android:name=".ReceiveStudentActivity" />
         <activity android:name=".StudentWalletActivity" />
         <activity android:name=".NonStudentWalletActivity" />
         <activity android:name=".ScannedBarcodeActivity" />
@@ -43,6 +43,8 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
+        <activity android:name=".ReceiveNonStudentActivity" />
+        <activity android:name=".ConfirmationActivity"></activity>
     </application>
 
 </manifest>

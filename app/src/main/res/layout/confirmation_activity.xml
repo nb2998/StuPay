@@ -12,17 +12,15 @@
         android:layout_height="185dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         app:srcCompat="@drawable/tick" />
 
     <TextView
         android:id="@+id/tvConfirmation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction Confir"
+        android:text="Transaction Confirmed"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(etId.getText().toString().trim().length() != 0) {
+                if (etId.getText().toString().trim().length() != 0) {
                     id = Integer.valueOf(etId.getText().toString());
                     if (id < 20) {
                         Intent nonstudentIntent = new Intent(LoginActivity.this, NonStudentWalletActivity.class);
@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 }
 
@@ -55,11 +56,20 @@ public class LoginActivity extends AppCompatActivity {
 //
 //        NonStudent ns1 = new NonStudent(1, "Canteen", 1000);
 //        ref.child("NonStudent").setValue(ns1);
-////        NonStudent ns2 = new NonStudent(2, "Photostat", 250);
-////        NonStudent ns3 = new NonStudent(3, "Literary-Society", 100);
+//        NonStudent ns2 = new NonStudent(2, "Photostat", 250);
+//        NonStudent ns3 = new NonStudent(3, "Literary-Society", 100);
+//        NonStudent ns4 = new NonStudent(4, "Hostel mess", 200);
+//        NonStudent ns5 = new NonStudent(5, "Nescafé", 200);
+//        ref.child("NonStudent").push().setValue(ns2);
+//        ref.child("NonStudent").push().setValue(ns3);
+//        ref.child("NonStudent").push().setValue(ns4);
+//        ref.child("NonStudent").push().setValue(ns5);
 //
 //        Student s1 = new Student(21, "Nishtha", "01001012016", 100);
 //        ref.child("Student").setValue(s1);
-////        Student s2 = new Student(22, "Aakarshita", "02001012016", 100);
-////        Student s3 = new Student(23, "Prerna", "03001012016", 100);
-////        Student s4 = new Student(24, "Dilsheen", "04001012016", 100);
+//        Student s2 = new Student(22, "Aakarshita", "02001012016", 100);
+//        Student s3 = new Student(23, "Prerna", "03001012016", 100);
+//        Student s4 = new Student(24, "Dilsheen", "04001012016", 100);
+//        ref.child("Student").push().setValue(s2);
+//        ref.child("Student").push().setValue(s3);
+//        ref.child("Student").push().setValue(s4);

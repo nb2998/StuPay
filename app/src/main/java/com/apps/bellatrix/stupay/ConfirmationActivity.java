@@ -3,11 +3,11 @@ package com.apps.bellatrix.stupay;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ReceiveActivity extends AppCompatActivity {
+public class ConfirmationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.receive);
+        setContentView(R.layout.confirmation_activity);
     }
 }
