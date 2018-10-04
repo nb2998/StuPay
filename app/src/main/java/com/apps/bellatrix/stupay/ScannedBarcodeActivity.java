@@ -3,9 +3,11 @@ package com.apps.bellatrix.stupay;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -18,6 +20,11 @@ import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 
@@ -31,6 +38,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     Button btnAction;
     String intentData = "";
     boolean isEmail = false;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +49,59 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
 
+        id = getIntent().getIntExtra(getString(R.string.loginId), 24);
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                final DatabaseReference ref = firebaseDatabase.getReference();
+
+                final DatabaseReference curr = ref.child("Student").child(String.valueOf(id)).child("-LO-JpcKGtMtWZuqnXOD");
+                Log.d("TAG", "onClick: "+curr);
+
+//                Log.d("TAG", "onDataChange: "+currBal);
+
+//                curr.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        double currBal = (Double) dataSnapshot.child("currentBalance").getValue();
+//                        Log.d("TAG", "onDataChange: "+currBal);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+
+                curr.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot!=null) {
+                            long currBal = (Long) dataSnapshot.child("currentBalance").getValue();
+                            Log.d("TAG", "onDataChange: " + currBal);
+                            currBal -= 20;
+
+                            ref.child("Student").child(String.valueOf(id)).child("-LO-JpcKGtMtWZuqnXOD").child("currentBalance").setValue(currBal);
+
+                        } else {
+                            Log.d("TAG", "onDataChange: " + null);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
                 Intent successfulIntent = new Intent(ScannedBarcodeActivity.this, ConfirmationActivity.class);
+                successfulIntent.putExtra(getString(R.string.loginId), id);
+                successfulIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(successfulIntent);
+
+
             }
         });
 

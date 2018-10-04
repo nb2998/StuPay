@@ -36,13 +36,11 @@
 
     <EditText
         android:id="@+id/etPwd"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/etName"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/etName"
-        android:layout_below="@+id/etName"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="238dp"
         android:ems="10"
         android:hint="Enter password"
         android:inputType="textPassword"

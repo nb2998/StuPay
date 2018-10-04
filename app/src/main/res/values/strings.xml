@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StuPay</string>
+    <string name="loginId">loginId</string>
 </resources>
