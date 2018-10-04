@@ -21,7 +21,7 @@ public class StudentWalletActivity extends AppCompatActivity {
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent payIntent = new Intent(StudentWalletActivity.this, PayActivity.class);
+                Intent payIntent = new Intent(StudentWalletActivity.this, ScannedBarcodeActivity.class);
                 startActivity(payIntent);
             }
         });
