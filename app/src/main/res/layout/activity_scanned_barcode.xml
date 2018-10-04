@@ -5,24 +5,15 @@
     android:layout_height="match_parent"
     android:padding="5dp">
 
-    <SurfaceView
-        android:id="@+id/surfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_above="@+id/btnAction"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true" />
-
     <TextView
         android:id="@+id/txtBarcodeValue"
-        android:layout_width="108dp"
-        android:layout_height="47dp"
+        android:layout_width="306dp"
+        android:layout_height="89dp"
+        android:layout_alignEnd="@+id/editText2"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="69dp"
         android:text="No Barcode Detected"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="20sp" />
 
 
@@ -52,6 +43,14 @@
         android:layout_marginEnd="29dp"
         android:ems="10"
         android:inputType="number" />
+
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="268dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="121dp" />
 
 </RelativeLayout>
 
