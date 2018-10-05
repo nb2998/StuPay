@@ -6,12 +6,38 @@
     android:padding="5dp">
 
     <TextView
+        android:id="@+id/tvPending"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etAmount"
+        android:text="Pending debts: " />
+
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_below="@+id/tvPending" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/checkBox"
+        android:layout_marginStart="93dp"
+        android:text="Rs. 15 pending from Prerna" />
+
+
+    <TextView
         android:id="@+id/txtBarcodeValue"
         android:layout_width="306dp"
-        android:layout_height="89dp"
-        android:layout_alignEnd="@+id/editText2"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="112dp"
+        android:gravity="top"
         android:text="No Barcode Detected"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -35,7 +61,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -47,10 +73,9 @@
     <SurfaceView
         android:id="@+id/surfaceView"
         android:layout_width="match_parent"
-        android:layout_height="268dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="121dp" />
+        android:layout_height="339dp"
+        android:layout_above="@+id/btnAction"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
 

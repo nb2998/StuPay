@@ -13,6 +13,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,34 +35,31 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
     SurfaceView surfaceView;
     TextView txtBarcodeValue;
+    EditText etAmount;
     private BarcodeDetector barcodeDetector;
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     Button btnAction;
-    ImageButton btnTransactions;
     String intentData = "";
     boolean isEmail = false;
     int id;
+    long amountToBeDeducted = 20;
+    CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanned_barcode);
 
+        amountToBeDeducted = 20;
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
-        btnTransactions = findViewById(R.id.btnTransactions);
+//        btnTransactions = findViewById(R.id.btnTransactions);
+        etAmount = findViewById(R.id.etAmount);
+        checkBox = findViewById(R.id.checkBox);
 
         id = getIntent().getIntExtra(getString(R.string.loginId), 24);
-
-        btnTransactions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent transacIntent = new Intent(ScannedBarcodeActivity.this, TransactionsActivity.class);
-                startActivity(transacIntent);
-            }
-        });
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,9 +78,13 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(dataSnapshot!=null) {
+                            if(checkBox.isChecked()){
+                                amountToBeDeducted = 5;
+                            }
+
                             long currBal = (Long) dataSnapshot.child("currentBalance").getValue();
                             Log.d("TAG", "onDataChange: " + currBal);
-                            currBal -= 20;
+                            currBal -= amountToBeDeducted;
 
                             ref.child("Student").child(String.valueOf(id)).child("-LO-JpcKGtMtWZuqnXOD").child("currentBalance").setValue(currBal);
 
