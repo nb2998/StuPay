@@ -13,6 +13,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
     private CameraSource cameraSource;
     private static final int REQUEST_CAMERA_PERMISSION = 201;
     Button btnAction;
+    ImageButton btnTransactions;
     String intentData = "";
     boolean isEmail = false;
     int id;
@@ -48,8 +50,17 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
         txtBarcodeValue = findViewById(R.id.txtBarcodeValue);
         surfaceView = findViewById(R.id.surfaceView);
         btnAction = findViewById(R.id.btnAction);
+        btnTransactions = findViewById(R.id.btnTransactions);
 
         id = getIntent().getIntExtra(getString(R.string.loginId), 24);
+
+        btnTransactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent transacIntent = new Intent(ScannedBarcodeActivity.this, TransactionsActivity.class);
+                startActivity(transacIntent);
+            }
+        });
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,21 +74,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
                 final DatabaseReference curr = ref.child("Student").child(String.valueOf(id)).child(unique);
                 Log.d("TAG", "onClick: "+curr);
-
-//                Log.d("TAG", "onDataChange: "+currBal);
-
-//                curr.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        double currBal = (Double) dataSnapshot.child("currentBalance").getValue();
-//                        Log.d("TAG", "onDataChange: "+currBal);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
 
                 curr.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

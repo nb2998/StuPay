@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +20,7 @@ public class NonStudentWalletActivity extends AppCompatActivity {
     Button btnReceive;
     TextView tvAmount;
     int id;
+    ImageButton btnTransactions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +28,18 @@ public class NonStudentWalletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_non_student_wallet);
 
         btnReceive = findViewById(R.id.btnReceive);
-
         tvAmount = findViewById(R.id.tvAmount);
-
+        btnTransactions = findViewById(R.id.btnTransactions);
         id = getIntent().getIntExtra(getString(R.string.loginId), 21);
+
+        btnTransactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent transActionIntent = new Intent(NonStudentWalletActivity.this, TransactionsActivity.class);
+                transActionIntent.putExtra(getString(R.string.loginId), id);
+                startActivity(transActionIntent);
+            }
+        });
 
         btnReceive.setOnClickListener(new View.OnClickListener() {
             @Override

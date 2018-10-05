@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.apps.bellatrix.stupay.models.Student;
@@ -22,6 +23,7 @@ public class StudentWalletActivity extends AppCompatActivity{
     Button btnPay, btnReceive;
     TextView tvAmount;
     int id;
+    ImageButton btnTransactions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +32,19 @@ public class StudentWalletActivity extends AppCompatActivity{
 
         btnPay = findViewById(R.id.btnPay);
         btnReceive = findViewById(R.id.btnReceive);
+        btnTransactions = findViewById(R.id.btnTransactions);
         tvAmount = findViewById(R.id.tvAmount);
 
         id = getIntent().getIntExtra(getString(R.string.loginId), 21);
+
+        btnTransactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent transActionIntent = new Intent(StudentWalletActivity.this, TransactionsActivity.class);
+                transActionIntent.putExtra(getString(R.string.loginId), id);
+                startActivity(transActionIntent);
+            }
+        });
 
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
