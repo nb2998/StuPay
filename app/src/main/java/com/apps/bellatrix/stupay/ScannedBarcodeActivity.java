@@ -61,53 +61,6 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
 
         id = getIntent().getIntExtra(getString(R.string.loginId), 24);
 
-        btnAction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                final DatabaseReference ref = firebaseDatabase.getReference();
-
-                String unique = "";
-                if(id ==24) unique = "-LO-JpcKGtMtWZuqnXOD";
-                else unique = "-LO-JpcJWPJ2CjM4tNu9";
-
-                final DatabaseReference curr = ref.child("Student").child(String.valueOf(id)).child(unique);
-                Log.d("TAG", "onClick: "+curr);
-
-                curr.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot!=null) {
-                            if(checkBox.isChecked()){
-                                amountToBeDeducted = 5;
-                            }
-
-                            long currBal = (Long) dataSnapshot.child("currentBalance").getValue();
-                            Log.d("TAG", "onDataChange: " + currBal);
-                            currBal -= amountToBeDeducted;
-
-                            ref.child("Student").child(String.valueOf(id)).child("-LO-JpcKGtMtWZuqnXOD").child("currentBalance").setValue(currBal);
-
-                        } else {
-                            Log.d("TAG", "onDataChange: " + null);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-
-                Intent successfulIntent = new Intent(ScannedBarcodeActivity.this, ConfirmationActivity.class);
-                successfulIntent.putExtra(getString(R.string.loginId), id);
-                successfulIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(successfulIntent);
-
-
-            }
-        });
-
     }
 
     private void initialiseDetectorsAndSources() {
@@ -163,6 +116,13 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                 final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                 if (barcodes.size() != 0) {
 
+                    btnAction.setClickable(true);
+                    btnAction.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            takeAction();
+                        }
+                    });
 
                     txtBarcodeValue.post(new Runnable() {
 
@@ -174,13 +134,10 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                                 intentData = barcodes.valueAt(0).email.address;
                                 txtBarcodeValue.setText(intentData);
                                 isEmail = true;
-                                btnAction.setText("ADD CONTENT TO THE MAIL");
                             } else {
                                 isEmail = false;
-                                btnAction.setText("LAUNCH URL");
                                 intentData = barcodes.valueAt(0).displayValue;
                                 txtBarcodeValue.setText(intentData);
-
                             }
                         }
                     });
@@ -188,6 +145,50 @@ public class ScannedBarcodeActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void takeAction() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = firebaseDatabase.getReference();
+
+        String unique = "";
+        if(id ==24) unique = "-LO-JpcKGtMtWZuqnXOD";
+        else unique = "-LO-JpcJWPJ2CjM4tNu9";
+
+        final DatabaseReference curr = ref.child("Student").child(String.valueOf(id)).child(unique);
+        Log.d("TAG", "onClick: "+curr);
+
+        curr.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot!=null) {
+                    if(checkBox.isChecked()){
+                        amountToBeDeducted = 5;
+                    }
+
+                    long currBal = (Long) dataSnapshot.child("currentBalance").getValue();
+                    Log.d("TAG", "onDataChange: " + currBal);
+                    currBal -= amountToBeDeducted;
+
+                    ref.child("Student").child(String.valueOf(id)).child("-LO-JpcKGtMtWZuqnXOD").child("currentBalance").setValue(currBal);
+
+                } else {
+                    Log.d("TAG", "onDataChange: " + null);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        Intent successfulIntent = new Intent(ScannedBarcodeActivity.this, ConfirmationActivity.class);
+        successfulIntent.putExtra(getString(R.string.loginId), id);
+        successfulIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(successfulIntent);
+
+
     }
 
 
